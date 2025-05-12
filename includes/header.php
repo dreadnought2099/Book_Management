@@ -19,6 +19,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <h1><?= APP_NAME ?></h1>
     <nav>
         <a href="<?= APP_URL ?>">Home</a>
+        <a href="<?= APP_URL ?>books/books.php">Books</a>
         <?php if (isLoggedIn()): ?>
             <a href="<?= APP_URL ?>dashboard.php">Dashboard</a>
             <a href="<?= APP_URL ?>auth/logout.php">Logout</a>
