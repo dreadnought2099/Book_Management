@@ -59,6 +59,10 @@ h2, h3 {
     margin-top: 0;
 }
 
+.head2 {
+    text-align: center;
+}
+
 /* Form Elements */
 form {
     margin-top: 20px;

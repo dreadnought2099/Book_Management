@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <?php include '../includes/header.php'; ?>
 
-<h2>Add Book</h2>
+<h2 class="head2">Add Book</h2>
 
 <form method="POST" enctype="multipart/form-data">
     <input type="text" name="title" placeholder="Title" required><br><br>

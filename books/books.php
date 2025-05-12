@@ -14,7 +14,7 @@ $books = $pdo->query("
 include '../includes/header.php';
 ?>
 
-<h2>All Books</h2>
+<h2 class="head2">All Books</h2>
 
 <?php if ($books): ?>
     <ul>
@@ -31,11 +31,11 @@ include '../includes/header.php';
 
                 <?php if (isLoggedIn() && $_SESSION['user_id'] == $book['user_id']): ?>
                     <!-- Delete option for uploader only -->
-                    <a href="../auth/delete.php?id=<?= $book['id'] ?>&redirect=../books/books"
-                       class="button-link"
-                       onclick="return confirm('Are you sure you want to delete this book?');">
+                    <a href="books/delete.php?id=<?= $book['id'] ?>"
+                        onclick="return confirm('Are you sure you want to delete this book with ID <?= htmlspecialchars($book['id'], ENT_QUOTES) ?>?');">
                         Delete
                     </a>
+
                 <?php endif; ?>
             </li>
         <?php endforeach; ?>

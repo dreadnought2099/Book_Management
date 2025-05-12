@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php include '../includes/header.php'; ?>
 
-<h2>Login</h2>
+<h2 class="head2">Login</h2>
 <?php if (!empty($errors)): ?>
     <div>
         <?php foreach ($errors as $error): ?>

@@ -22,10 +22,10 @@ if (session_status() === PHP_SESSION_NONE) {
         <a href="<?= APP_URL ?>books/books.php">Books</a>
         <?php if (isLoggedIn()): ?>
             <a href="<?= APP_URL ?>dashboard.php">Dashboard</a>
-            <a href="<?= APP_URL ?>auth/logout.php">Logout</a>
             <?php if (isAdmin()): ?>
                 <a href="<?= APP_URL ?>admin/dashboard.php">Admin Panel</a>
             <?php endif; ?>
+            <a href="<?= APP_URL ?>auth/logout.php">Logout</a>
         <?php else: ?>
             <a href="<?= APP_URL ?>auth/login.php">Login</a>
             <a href="<?= APP_URL ?>auth/register.php">Register</a>

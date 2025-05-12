@@ -5,25 +5,61 @@ require_once '../includes/functions.php';
 
 redirectIfNotAdmin();
 
-// Get all users
-$users = $pdo->query("SELECT * FROM users ORDER BY id DESC")->fetchAll();
+// Handle delete request
+if (isset($_GET['delete_id'])) {
+    $deleteId = (int)$_GET['delete_id'];
 
-// Get all books with uploader info
+    if ($_SESSION['user_id'] == $deleteId) {
+        echo "You cannot delete your own account.";
+        exit();
+    }
+
+    $stmt = $pdo->prepare("DELETE FROM users WHERE id = ?");
+    $stmt->execute([$deleteId]);
+
+    // Avoid resubmission
+    header('Location: dashboard.php');
+    exit();
+}
+
+// Fetch users and books
+$users = $pdo->query("SELECT * FROM users ORDER BY id DESC")->fetchAll();
 $books = $pdo->query("SELECT books.*, users.username FROM books JOIN users ON books.user_id = users.id ORDER BY books.id DESC")->fetchAll();
 
 include '../includes/header.php';
 ?>
 
-<h2>Admin Dashboard</h2>
+<h2 class="head2">Admin Dashboard</h2>
 
 <section>
     <h3>All Users</h3>
     <?php if ($users): ?>
-        <ul>
-            <?php foreach ($users as $user): ?>
-                <li><?= htmlspecialchars($user['username']) ?> (<?= htmlspecialchars($user['email']) ?>)</li>
-            <?php endforeach; ?>
-        </ul>
+        <table border="1" cellpadding="5" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($users as $user): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($user['id']) ?></td>
+                        <td><?= htmlspecialchars($user['username']) ?></td>
+                        <td><?= htmlspecialchars($user['email']) ?></td>
+                        <td><?= htmlspecialchars($user['role']) ?></td>
+                        <td>
+                            <a href="dashboard.php?delete_id=<?= $user['id'] ?>"
+                               class="button-link"
+                               onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     <?php else: ?>
         <p>No users found.</p>
     <?php endif; ?>

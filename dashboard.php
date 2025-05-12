@@ -14,7 +14,7 @@ $books = $stmt->fetchAll();
 include 'includes/header.php';
 ?>
 
-<h2>Welcome, <?= htmlspecialchars($_SESSION['username']) ?>!</h2>
+<h2 class="head2">Welcome, <?= htmlspecialchars($_SESSION['username']) ?>!</h2>
 
 <h3>Your Books</h3>
 <p><a href="books/add.php">Add New Book</a></p>
@@ -26,7 +26,10 @@ include 'includes/header.php';
                 <strong><?= htmlspecialchars($book['title']) ?></strong> by <?= htmlspecialchars($book['author']) ?>
                 <a href="books/view.php?id=<?= $book['id'] ?>">View</a>
                 <a href="books/edit.php?id=<?= $book['id'] ?>">Edit</a>
-                <a href="books/delete.php?id=<?= $book['id'] ?>" onclick="return confirm('Are you sure?')">Delete</a>
+                <a href="books/delete.php?id=<?= $book['id'] ?>"
+                    onclick="return confirm('Are you sure you want to delete this book with ID <?= htmlspecialchars($book['id'], ENT_QUOTES) ?>?');">
+                    Delete
+                </a>    
             </li>
         <?php endforeach; ?>
     </ul>

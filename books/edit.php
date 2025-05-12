@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <?php include '../includes/header.php'; ?>
 
-<h2>Edit Book</h2>
+<h2 class="head2">Edit Book</h2>
 
 <form method="POST" enctype="multipart/form-data">
     <input type="text" name="title" value="<?= htmlspecialchars($book['title']) ?>" required><br><br>
