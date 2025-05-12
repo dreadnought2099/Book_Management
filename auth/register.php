@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (isset($_SESSION['user_id'])) {
+    header('Location: ../dashboard.php');
+    exit();
+}
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -59,4 +64,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <button type="submit">Register</button>
 </form>
 
-<p>Already have an account? <
+<p>Already have an account? <span><a href="login.php">Login</a></span></p>
+
+<?php include '../includes/footer.php'; ?>

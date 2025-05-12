@@ -1,29 +1,146 @@
-body {
-    font-family: Arial, sans-serif;
+/* General Reset */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* Body Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f4f6f8;
+    color: #333;
+}
+
+/* Header and Footer */
 header, footer {
-    background-color: #333;
+    background-color: #1e2a38;
     color: #fff;
-    padding: 10px;
+    padding: 15px 30px;
+    text-align: center;
 }
 
-header nav a, footer {
+/* Footer always at the bottom */
+footer {
+    margin-top: auto;
+}
+
+header h1 {
+    margin: 0 0 10px;
+}
+
+nav a {
     color: #fff;
-    margin-right: 10px;
+    margin-right: 15px;
     text-decoration: none;
+    font-weight: bold;
 }
 
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Main Layout */
 main {
-    padding: 20px;
+    padding: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    flex-grow: 1;
 }
 
-form input, form textarea, form button {
+/* Headings */
+h2, h3 {
+    margin-top: 0;
+}
+
+/* Form Elements */
+form {
+    margin-top: 20px;
+}
+
+form input,
+form textarea,
+form select,
+form button {
     display: block;
-    margin-bottom: 10px;
-    padding: 8px;
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Lists & Tables */
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a.button-link {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 6px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+a.button-link:hover {
+    background-color: #0056b3;
+}
+
+/* Table */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f0f0f0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    main {
+        padding: 15px;
+    }
+
+    form input,
+    form textarea,
+    form select,
+    form button {
+        max-width: 100%;
+    }
 }
